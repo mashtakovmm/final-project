@@ -1,0 +1,12 @@
+.link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.reg-link {
+    color: grey;
+}
+
+.reg-link:hover {
+    text-decoration: underline;
+}
