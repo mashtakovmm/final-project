@@ -46,14 +46,14 @@ function Home() {
         <h1><Link to={{pathname:`/`}} className='link'>Renit</Link></h1>
         <div className='button-container'>
           {email!=="" && token!=="" ? (
-            <>
+            <div className='loged-in-container'>
               <p>Привет, {email}</p>
-              <button onClick={logOutButtonClick}>Log Out</button>
-            </>
+              <button className='button log-out-button' onClick={logOutButtonClick}>Log Out</button>
+            </div>
           ) : (
             <>
-            <button><Link to={{ pathname: `/signin`}} className='link'>Вход</Link></button>
-            <button><Link to={{ pathname: `/signup`}} className='link'>Регистрация</Link></button>
+            <button className='button'><Link to={{ pathname: `/signin`}} className='link'>Вход</Link></button>
+            <button className='button'><Link to={{ pathname: `/signup`}} className='link'>Регистрация</Link></button>
             </>
           )}
 

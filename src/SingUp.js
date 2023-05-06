@@ -13,7 +13,7 @@ function SignUp() {
       <h1><Link to={{pathname:`/`}} className='link'>Renit</Link></h1>
       </header>
       <main className='main main-login'> 
-        <h2 className='h2 h2-login'>Sign In</h2>
+        <h2 className='h2 h2-login'>Sign Up</h2>
         <RegForm />  
       </main>
     </>

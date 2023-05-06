@@ -21,7 +21,7 @@
     font-size: 24px;
   }
   
-  .header button {
+  .button {
     background-color: #90BF88;
     color: #fff;
     border: none;
@@ -32,10 +32,21 @@
     transition: background-color 0.3s ease;
   }
   
-  .header button:hover {
+  .log-out-button {
+    max-height: 34px;
+  }
+  
+  .button:hover {
     background-color: #2F5E5B;
   }
   
+  .loged-in-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center
+  }
+
   /* Оформление основного содержимого */
   .main {
     background-color: #fff;

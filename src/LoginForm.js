@@ -74,7 +74,7 @@ function LoginForm() {
         </div>
         <button type="submit">Войти</button>
         </form>
-        <p><Link to={{pathname: "/"}} className='link reg-link'>Нет аккаунта?</Link></p>
+        <p><Link to={{pathname: "/signup"}} className='link reg-link'>Нет аккаунта?</Link></p>
     </>
   );
 }
