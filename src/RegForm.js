@@ -3,7 +3,6 @@ import "./Home.css"
 import "./SignIn.css"
 import "./Error.css"
 import "./Links.css"
-import { Link } from 'react-router-dom';
 
 
 function RegForm() {
