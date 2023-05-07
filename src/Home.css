@@ -1,4 +1,13 @@
-/* Оформление заголовка */
+
+@media (max-width: 502px) {
+  .invis {
+    display: none;
+  }
+  .useful-links-container {
+    flex-direction: column;
+  }
+}
+
 .header {
     display: flex;
     justify-content: space-between;

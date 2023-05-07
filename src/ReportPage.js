@@ -139,7 +139,7 @@ function ReportPage() {
             <div className='button-container'>
             {email!=="" && token!=="" ? (
                 <div className='loged-in-container'>
-                <p>Привет, {email}</p>
+                <p className="invis"> Привет, {email}</p>
                 <button className='button log-out-button' onClick={logOutButtonClick}>Log Out</button>
                 </div>
             ) : (
@@ -159,7 +159,7 @@ function ReportPage() {
                         {error ? (<div style={{color:errorColor}}>{error}</div>):(<></>)}
                         <span className="title">ID:</span> <span>{data._id ? data._id : "-"}</span>
                         <span className="title">Сотрудник:</span> 
-                        <select className='select' id="officer" name="officer" value={data.officer} onChange={handleChange}>
+                        <select className='select select-page' id="officer" name="officer" value={data.officer} onChange={handleChange}>
                             {officersList.map((officerId) => (
                                 <option key={officerId} value={officerId}>
                                     {officerId}
@@ -170,19 +170,18 @@ function ReportPage() {
                         <span className="title">Номер лицензии: </span> <input name="licenseNumber" type="text" value={data.licenseNumber || ''} onChange={handleChange}/>
                         <span className="title">Цвет: </span> <input name="color" type="text" value={data.color || ''} onChange={handleChange}/>
                         <span className="title">Тип: </span>
-                        <select className='select' id="type" name="type" value={data.type} onChange={handleChange}>
+                        <select className='select select-page' id="type" name="type" value={data.type} onChange={handleChange}>
                             {typeList.map((type) => (
                                 <option key={type} value={type}>
                                     {type}
                                 </option>
                         ))}
                         </select>
-                        {/* <span className="title">Дата кражи: </span> <input type="datetime-local" name="date" value={data.date ? data.date.slice(0, -1) : " " } onChange={handleChange}/> */}
                         <span className="title">Дата регистрации сообщения: </span> <span>{data.createdAt ? data.createdAt : "-"}</span>
                         <span className="title">Последнее обновление: </span> <span>{data.updatedAt ? data.updatedAt : "-"}</span>
-                        <span className="title">Описание: </span> <input className="descr-input" name="description" type="text" value={data.description || ''} onChange={handleChange}/>
+                        <span className="title">Описание: </span> <textarea className="descr-input" name="description" rows="4" value={data.description || ''} onChange={handleChange}></textarea>
                         <span className="title">Статус: </span>
-                        <select className='select' id="status" name="status" value={data.status} onChange={handleChange}>
+                        <select className='select select-page' id="status" name="status" value={data.status} onChange={handleChange}>
                             {statusList.map((status) => (
                                 <option key={status} value={status}>
                                     {status}

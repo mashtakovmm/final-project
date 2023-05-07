@@ -1,3 +1,17 @@
+@media (max-width: 502px) {
+    .invis {
+      display: none;
+    }
+    .img {
+        min-height: 20px;
+        min-width: 20px;
+    }
+    .table {
+        font-size: 12px;
+    }
+  }
+  
+
 .table-button {
     display: flex;
     align-items:flex-start;

@@ -35,7 +35,7 @@ function Reports() {
             <div className='button-container'>
             {email!=="" && token!=="" ? (
                 <div className='loged-in-container'>
-                <p>Привет, {email}</p>
+                <p className="invis">Привет, {email}</p>
                 <button className='button log-out-button' onClick={logOutButtonClick}>Log Out</button>
                 </div>
             ) : (

@@ -117,7 +117,7 @@ function OfficerPage() {
             <div className='button-container'>
             {email!=="" && token!=="" ? (
                 <div className='loged-in-container'>
-                <p>Привет, {email}</p>
+                <p className="invis">Привет, {email}</p>
                 <button className='button log-out-button' onClick={logOutButtonClick}>Log Out</button>
                 </div>
             ) : (
@@ -134,6 +134,7 @@ function OfficerPage() {
             ) : (
                 <>
                 <div className="report-container">
+                    {error ? (<div style={{color:errorColor}}>{error}</div>):(<></>)}
                     <span className="title">ID:</span> <span> {data.clientId} </span> 
                     <span className="title">Email:</span> <span> {data.email} </span> 
                     <span className="title">Имя: </span> <input name="firstName" type="text" value={data.firstName || ''} onChange={handleChange}/>

@@ -3,6 +3,7 @@ import "./Home.css"
 import "./SignIn.css"
 import "./Error.css"
 import "./Links.css"
+import "./SubmitReport.css"
 
 // TODO: доделать
 function SubmitForm() {
@@ -158,7 +159,7 @@ function SubmitForm() {
         </div>
         <div>
             <label htmlFor="type">Тип велосипеда *</label>
-            <select className='select' id="type" value={type} onChange={(e) => setType(e.target.value)}>
+            <select className='select select-submit' id="type" value={type} onChange={(e) => setType(e.target.value)}>
                 <option value="">Выберите тип велосипеда</option>
                 <option value="sport">Спортивный</option>
                 <option value="general">Обычный</option>
@@ -195,7 +196,7 @@ function SubmitForm() {
         (
         <div>
         <label htmlFor="type">ID сотрудника</label>
-        <select className='select' id="officer" value={officer} onChange={(e) => setOfficer(e.target.value)}>
+        <select className='select select-submit' id="officer" value={officer} onChange={(e) => setOfficer(e.target.value)}>
             <option value="">Выберите сотрудника</option>
             {officersList.map((officerId) => (
                 <option key={officerId} value={officerId}>

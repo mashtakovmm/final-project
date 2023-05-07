@@ -9,12 +9,12 @@ const OpenButton = ({ id, type }) => {
     {type === "reports" ? (
       <Link className="link link-button" to={`/reports/${id}`}>
         <img className="img" src="open.svg" />
-        <span className="span">Открыть</span>
+        <span className="span invis">Открыть</span>
       </Link>
     ) : (
     <Link className="link link-button" to={`/officers/${id}`}>
       <img className="img" src="open.svg" />
-      <span className="span">Открыть</span>
+      <span className="span invis">Открыть</span>
     </Link>
   )}
   </button>
