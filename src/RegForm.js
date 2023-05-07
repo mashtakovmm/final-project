@@ -5,6 +5,7 @@ import "./Error.css"
 import "./Links.css"
 
 
+
 function RegForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

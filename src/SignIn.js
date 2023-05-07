@@ -4,6 +4,7 @@ import "./Links.css"
 import "./SignIn.css"
 import { Link } from "react-router-dom";
 import LoginForm from './LoginForm';
+import Footer from './Footer';
 
 
 function Signin() {
@@ -16,6 +17,7 @@ function Signin() {
         <h2 className='h2 h2-login'>Sign In</h2>
         <LoginForm />  
       </main>
+      <Footer />
     </>
   );
 }

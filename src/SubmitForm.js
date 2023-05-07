@@ -5,7 +5,6 @@ import "./Error.css"
 import "./Links.css"
 import "./SubmitReport.css"
 
-// TODO: доделать
 function SubmitForm() {
   const [clientId, setClientId] = useState(localStorage.getItem("clientId"))
   const [errorColor, setErrorColor] = useState("red");

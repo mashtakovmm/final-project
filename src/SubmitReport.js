@@ -6,6 +6,7 @@ import "./SignIn.css"
 import SubmitForm from './SubmitForm';
 import { Link } from "react-router-dom";
 import { useState ,useEffect } from 'react';
+import Footer from './Footer';
 
 function SubmitReport() {
 
@@ -18,6 +19,7 @@ function SubmitReport() {
           <h2 className='h2 h2-login'>Submit Report</h2>
           <SubmitForm />
       </main>
+      <Footer />
       </>
     );
   }

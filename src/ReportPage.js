@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import './ReportPage.css';
+import Footer from "./Footer";
 
 function ReportPage() {
 
@@ -183,17 +184,18 @@ function ReportPage() {
                         <span className="title">Статус: </span>
                         <select className='select select-page' id="status" name="status" value={data.status} onChange={handleChange}>
                             {statusList.map((status) => (
-                                <option key={status} value={status}>
+                                <option key={status} value={status} disabled={status === 'done' && !data.resolution}>
                                     {status}
                                 </option>
                         ))}
                         </select>
-                        <span className="title">Решение: </span> <input name="resolution" type="text" value={data.resolution || ''} readOnly={data.status !== "done"} onChange={handleChange}/>
+                        <span className="title">Решение: </span> <input name="resolution" type="text" value={data.resolution || ''}  onChange={handleChange}/>
                         <button className="button" style={{'marginTop': '10px'}} onClick={editCase}>Отправить</button>
                     </div>
                 </>
             )}
         </main>
+        <Footer />
     </>
 )
 };

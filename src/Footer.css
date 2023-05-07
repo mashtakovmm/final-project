@@ -1,0 +1,31 @@
+.footer {
+    background-color: #FFFFFF;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    color: #90BF88;
+    text-align: center;
+    padding-top: 10px;
+  }
+
+  .footer__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .footer__text {
+    font-size: 16px;
+    color: #90BF88;
+  }
+  
+  .footer__highlight {
+    color: #90BF88;
+    font-weight: bold;
+  }
+  

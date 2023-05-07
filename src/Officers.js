@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import OfficersTable from "./OfficersTable";
+import Footer from "./Footer";
 
 function Officers() {
 
@@ -54,6 +55,7 @@ function Officers() {
                 </>
             )}
         </main>
+        <Footer />
     </>
 )
 };

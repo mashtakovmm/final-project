@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import './ReportPage.css';
+import Footer from "./Footer";
 
 function OfficerPage() {
 
@@ -146,6 +147,7 @@ function OfficerPage() {
                 </>
             )}
         </main>
+        <Footer />
     </>
 )
 };

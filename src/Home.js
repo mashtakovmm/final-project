@@ -3,7 +3,7 @@ import "./Home.css"
 import "./Links.css"
 import { Link } from "react-router-dom";
 import { useState ,useEffect } from 'react';
-
+import Footer from './Footer';
 
 function Home() {
   const [token, setToken] = useState("")
@@ -61,6 +61,7 @@ function Home() {
         </div>
         <img src="icon.png" alt="Изображение сервиса" className='img-home'/>
       </main>
+      <Footer />
     </>
   );
 }
