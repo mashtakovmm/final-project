@@ -27,7 +27,7 @@ function Home() {
   return (
     <>
       <header className='header'>
-        <h1><Link to={{pathname:`/`}} className='link'>Renit</Link></h1>
+        <h1><Link to={{pathname:`/`}} className='link link-header'>Renit</Link></h1>
         <div className='button-container'>
           {email!=="" && token!=="" ? (
             <div className='loged-in-container'>
@@ -53,9 +53,13 @@ function Home() {
         </div>
         <div>
           <h2 className='h2'>Полезные ссылки</h2>
-          <button className='button'><Link to={{ pathname: `/submit`}} className='link'>СООБЩИТЬ О КРАЖЕ</Link></button>
+          <div className='useful-links-container'>
+            <button className='button'><Link to={{ pathname: `/submit`}} className='link'>СООБЩИТЬ О КРАЖЕ</Link></button>
+            <button className='button'><Link to={{ pathname: `/reports`}} className='link'>СООБЩЕНИЯ О КРАЖАХ</Link></button>
+            <button className='button'><Link to={{ pathname: `/officers`}} className='link'>ОТВЕТСТВЕННЫЕ СОТРУДНИКИ</Link></button>
+          </div>
         </div>
-        <img src="icon.png" alt="Изображение сервиса" className='img'/>
+        <img src="icon.png" alt="Изображение сервиса" className='img-home'/>
       </main>
     </>
   );

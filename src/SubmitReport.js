@@ -12,7 +12,7 @@ function SubmitReport() {
     return (
         <>
         <header className='header'>
-        <h1><Link to={{pathname:`/`}} className='link'>Renit</Link></h1>
+          <h1><Link to={{pathname:`/`}} className='link link-header'>Renit</Link></h1>
         </header>
         <main className='main main-login'> 
           <h2 className='h2 h2-login'>Submit Report</h2>

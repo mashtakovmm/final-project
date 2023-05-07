@@ -8,6 +8,7 @@ import "./SignIn.css"
 function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [approved, setApproved] = useState(false)
   const [error, setError] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -41,8 +42,10 @@ function LoginForm() {
             response.json().then(result => {
                 const token = result.data.token;
                 const email = result.data.user.email;
+                const approved = result.data.user.approved;
                 localStorage.setItem('token', token); 
                 localStorage.setItem('email', email); 
+                localStorage.setItem('approved', approved); 
                 window.location.replace("/"); 
             })
           }

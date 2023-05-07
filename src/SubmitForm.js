@@ -17,7 +17,7 @@ function SubmitForm() {
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
   const [officer, setOfficer] = useState("");
-  const [officersList, setOfficersList] = useState(["111", "222"]);
+  const [officersList, setOfficersList] = useState([""]);
 
   useEffect(() => {
     getOfficers()
@@ -26,65 +26,117 @@ function SubmitForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitted(true)
+    if(localStorage.getItem("token")){
+        createCasePrivate(ownerFullName, licenseNumber, type, color, date, description, officer)
+    } else {
+        createCasePublic(ownerFullName, licenseNumber, type, clientId, color, date, description)
+    }
   };
 
-//   function SignUp(email, password, clientId, name, lastname) {
-//     var myHeaders = new Headers();
-//     myHeaders.append("Content-Type", "application/json");
-  
-//     var raw = JSON.stringify({
-//       "email": email,
-//       "password": password,
-//       "clientId": clientId,
-//       "firstName": name,
-//       "lastName": lastname
-//     });
-  
-//     var requestOptions = {
-//       method: 'POST',
-//       headers: myHeaders,
-//       body: raw,
-//       redirect: 'follow'
-//     };
-  
-//     fetch("https://sf-final-project-be.herokuapp.com/api/auth/sign_up", requestOptions)
-//     .then(response => {
-//       if (!response.ok) {
-//         response.json().then(data => setError(data.message))
-//         setErrorColor("red")
-//       } else {
-//         setError("Регистрация прошла успешно")
-//         setErrorColor("green")
-//       }
-//     })
-//     .catch(error => setError(error.message));  
-//   }   
+  function createCasePublic (name, licenseNumber, type, clientId, color="", date="", description="") {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
 
-  function getOfficers() {
-    const token = localStorage.getItem("token")
-    let officersList 
-    if(token) {
-        var myHeaders = new Headers();
-        myHeaders.append("Authorization", `Bearer ${token}`);
-    
-        var requestOptions = {
-        method: 'GET',
-        headers: myHeaders,
-        redirect: 'follow'
-        };
-    
-        fetch("https://sf-final-project-be.herokuapp.com/api/officers/", requestOptions)
-        .then(response => response.json())
-        .then(result => {
-            officersList = result.officers;
-            setOfficersList(officersList.map(obj=>obj._id));
-        })
-        .catch(error => console.log('error', error));
+    const raw = JSON.stringify({
+    "ownerFullName": name,
+    "licenseNumber": licenseNumber,
+    "type": type,
+    "clientId": clientId,
+    "color": color,
+    "date":date,
+    "description":description
+    });
+
+    const requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
+    };
+
+    fetch("https://sf-final-project-be.herokuapp.com/api/public/report", requestOptions)
+    .then(response => {
+        if (!response.ok) {
+          response.json().then(data => setError(data.message))
+          setErrorColor("red")
+        } else {
+          setError("Сообщение отправлено успешно")
+          setErrorColor("green")
+          clearForm()
+        }
+      });
+}
+
+  function createCasePrivate(name, licenseNumber, type, color="", date="", description="", officerId) {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", `Bearer ${localStorage.getItem('token')}`);
+
+    const raw = JSON.stringify({
+        "ownerFullName": name,
+        "licenseNumber": licenseNumber,
+        "type": type,
+        "color": color,
+        "date":date,
+        "description":description,
+        "officer":officerId
+    });
+
+    const requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
+    };
+
+    fetch("https://sf-final-project-be.herokuapp.com/api/cases/", requestOptions)
+    .then(response => {
+        if (!response.ok) {
+          response.json().then(data => setError(data.message))
+          setErrorColor("red")
+        } else {
+          setError("Сообщение отправлено успешно")
+          setErrorColor("green")
+          clearForm()
+        }
+      });
+}
+
+    function getOfficers() {
+        const token = localStorage.getItem("token")
+        let officersList 
+        if(token) {
+            var myHeaders = new Headers();
+            myHeaders.append("Authorization", `Bearer ${token}`);
+        
+            var requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow'
+            };
+        
+            fetch("https://sf-final-project-be.herokuapp.com/api/officers/", requestOptions)
+            .then(response => response.json())
+            .then(result => {
+                officersList = result.officers;
+                setOfficersList(officersList.filter(obj => obj.approved).map(obj => obj._id));
+            })
+            .catch(error => console.log('error', error));
+        }
     }
-  }
+
+    function clearForm() {
+        setColor = ""
+        setDate = ""
+        setDescription = ""
+        setOwnerFullName = ""
+        setLicenseNumber = ""
+        setType = ""
+      }
 
   return (
     <> 
+        {isSubmitted ? (<div style={{color:errorColor}}>{error}</div>):(<></>)}
         <form className='log-form' onSubmit={handleSubmit} autoComplete="off">
         <div>
             <label htmlFor="ownerFullName">Полное имя *</label>
@@ -108,14 +160,8 @@ function SubmitForm() {
             <label htmlFor="type">Тип велосипеда *</label>
             <select className='select' id="type" value={type} onChange={(e) => setType(e.target.value)}>
                 <option value="">Выберите тип велосипеда</option>
-                <option value="Sport">Спортивный</option>
-                <option value="Road">Шоссейный велосипед</option>
-                <option value="Hybrid">Гибридный велосипед</option>
-                <option value="BMX">BMX велосипед</option>
-                <option value="Kids">Детский велосипед</option>
-                <option value="E">Электрический велосипед</option>
-                <option value="Touring">Туринговый велосипед</option>
-                <option value="Cyclocross">Циклокросс велосипед</option>
+                <option value="sport">Спортивный</option>
+                <option value="general">Обычный</option>
             </select>
         </div>
         <div>
@@ -169,6 +215,7 @@ function SubmitForm() {
             />
         </div>   
         )}
+        <button type="submit">Отправить</button>
         </form>
     </>
   )

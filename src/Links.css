@@ -3,6 +3,15 @@
     color: inherit;
 }
 
+.link-header {
+    transition: color 0.3s ease;
+}
+
+.link-header:hover {
+    color:#2F5E5B;
+    
+}
+
 .reg-link {
     color: grey;
 }
@@ -19,4 +28,8 @@
 
 .link-reg-to-home:hover {
     text-decoration: underline;
+}
+
+.link-button {
+    display: flex;
 }
